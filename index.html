@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiteEye AI Civil - by Vikas Dipak Patil</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f6f8;margin:0;padding:0}
+header{background:#1a56db;color:white;padding:20px;text-align:center}
+.container{max-width:600px;margin:20px auto;background:white;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba0,0,0,0.1)}
+label{display:block;margin:10px 0 5px;font-weight:bold}
+input,select{width:100%;padding:10px;margin-bottom:10px;border:1px solid #ccc;border-radius:5px}
+button{background:#1a56db;color:white;padding:12px;width:100%;border:none;border-radius:5px;font-size:16px;cursor:pointer}
+.result{background:#eef4ff;padding:15px;border-radius:8px;margin-top:15px}
+footer{text-align:center;padding:20px;color:#666;font-size:14px}
+</style>
+</head>
+<body>
+<header>
+<h1>🏗️ SiteEye AI Civil</h1>
+<p>AI-Powered Construction Estimator</p>
+</header>
+<div class="container">
+<label>Work Type</label>
+<select id="work">
+<option value="plaster">Plaster</option>
+<option value="brick">Brick Wall</option>
+<option value="paint">Paint</option>
+</select>
+<label>Length (ft)</label>
+<input type="number" id="len" placeholder="e.g. 10">
+<label>Height (ft)</label>
+<input type="number" id="hei" placeholder="e.g. 10">
+<button onclick="calculate()">Calculate Estimate</button>
+<div id="out" class="result" style="display:none"></div>
+</div>
+<footer>
+© 2026 Vikas Dipak Patil<br>
+📧 vikaspatil2740@gmail.com | 📱 +91-8767610275
+</footer>
+<script>
+function calculate(){
+let l=parseFloat(document.getElementById('len').value);
+let h=parseFloat(document.getElementById('hei').value);
+let work=document.getElementById('work').value;
+if(!l||!h){alert('Please enter length and height');return;}
+let area=l*h;
+let html=`<h3>Area: ${area} sq.ft</h3>`;
+if(work=='plaster'){
+let cement=(area*0.13).toFixed(2);
+html+=`Cement: ${cement} bags<br>Sand: ${(area*0.02).toFixed(2)} brass<br>Est. Cost: Rs.${Math.round(area*45)}`;
+}else if(work=='brick'){
+let bricks=Math.round(area*4.5);
+html+=`Bricks: ${bricks} nos<br>Cement: ${(area*0.05).toFixed(2)} bags<br>Est. Cost: Rs.${Math.round(area*120)}`;
+}else{
+let paint=(area/100).toFixed(2);
+html+=`Paint: ${paint} litres<br>Primer: ${(area/150).toFixed(2)} litres<br>Est. Cost: Rs.${Math.round(area*25)}`;
+}
+document.getElementById('out').style.display='block';
+document.getElementById('out').innerHTML=html;
+}
+</script>
+</body>
+                                  </html>
