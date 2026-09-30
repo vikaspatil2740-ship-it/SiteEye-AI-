@@ -3,54 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SiteEye AI Civil Ultimate - Advanced Engineering Suite</title>
+<title>SiteEye AI Civil Ultimate Pro v2026</title>
+<!-- PDF Generation Library -->
+<script src="https://cloudflare.com"></script>
 <style>
-:root { --primary: #1a56db; --secondary: #0f766e; --bg: #f8fafc; --dark: #0f172a; --border: #cbd5e1; }
+:root { --primary: #1e40af; --accent: #0284c7; --success: #059669; --bg: #f1f5f9; --dark: #0f172a; --border: #cbd5e1; }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);margin:0;padding:0;color:var(--dark);line-height:1.5}
-header{background:linear-gradient(135deg, #1e3a8a, #1a56db);color:white;padding:30px 15px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
-header h1 {margin:0;font-size:26px;letter-spacing:0.5px}
-header p {margin:6px 0 0;opacity:0.9;font-size:14px;font-weight:300}
-.container{max-width:850px;margin:30px auto;background:white;padding:30px;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,0.05);box-sizing:border-box}
-.tab-container {display:flex;margin-bottom:25px;border-bottom:2px solid #e2e8f0;gap:5px;overflow-x:auto}
-.tab {padding:12px 20px;cursor:pointer;font-weight:600;color:#64748b;border-bottom:3px solid transparent;transition:0.2s;white-space:nowrap;font-size:15px}
-.tab.active {color:var(--primary);border-bottom-color:var(--primary)}
+header{background:linear-gradient(135deg, #0f172a, #1e40af);color:white;padding:35px 15px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+header h1 {margin:0;font-size:28px;letter-spacing:0.5px;font-weight:800}
+header p {margin:8px 0 0;opacity:0.9;font-size:14px;font-weight:400}
+.container{max-width:900px;margin:30px auto;background:white;padding:35px;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,0.05);box-sizing:border-box;border:1px solid #e2e8f0}
+.tab-container {display:flex;margin-bottom:25px;border-bottom:2px solid #e2e8f0;gap:5px;overflow-x:auto;padding-bottom:5px}
+.tab {padding:12px 24px;cursor:pointer;font-weight:700;color:#64748b;border-radius:8px 8px 0 0;border-bottom:3px solid transparent;transition:0.2s;white-space:nowrap;font-size:15px}
+.tab:hover {background:#f8fafc;color:var(--primary)}
+.tab.active {color:var(--primary);border-bottom-color:var(--primary);background:#eff6ff}
 .section {display:none}
 .section.active {display:block}
 .grid-2 {display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .grid-3 {display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px}
-label{display:block;margin:14px 0 6px;font-weight:600;font-size:14px;color:#334155}
-input,select{width:100%;padding:12px;margin-bottom:5px;border:1px solid var(--border);border-radius:8px;box-sizing:border-box;font-size:15px;transition:border 0.2s}
-input:focus,select:focus{border-color:var(--primary);outline:none;background:#f8fafc}
-.unit-badge {font-size:11px;color:#64748b;margin-top:2px;display:block;font-weight:500}
-button{background:var(--primary);color:white;padding:14px;width:100%;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;margin-top:20px;box-shadow:0 4px 6px rgba(26,86,219,0.2);transition:all 0.2s}
-button:hover{background:#1e40af;transform:translateY(-1px)}
-.result{background:#f1f5f9;padding:22px;border-radius:10px;margin-top:25px;border-left:6px solid var(--primary);display:none}
-.result h3 {margin-top:0;color:var(--primary);border-bottom:2px solid #e2e8f0;padding-bottom:8px;font-size:18px}
-.cost-breakdown {margin-top:15px;padding-top:15px;border-top:1px dashed #cbd5e1;font-weight:bold;font-size:16px;color:var(--dark)}
-.is-code {font-size:11px;color:#047857;background:#d1fae5;padding:5px 10px;border-radius:6px;display:inline-block;margin-bottom:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
-.formula-block {font-family:monospace;background:#e2e8f0;padding:8px 12px;border-radius:6px;margin:10px 0;font-size:13px;color:#475569}
-footer{text-align:center;padding:35px 15px;color:#64748b;font-size:13px;line-height:1.6;border-top:1px solid #e2e8f0;margin-top:40px}
+label{display:block;margin:14px 0 6px;font-weight:700;font-size:14px;color:#334155}
+input,select{width:100%;padding:12px 16px;margin-bottom:5px;border:2px solid var(--border);border-radius:8px;box-sizing:border-box;font-size:15px;transition:all 0.2s;font-weight:500}
+input:focus,select:focus{border-color:var(--accent);outline:none;background:#fff;box-shadow:0 0 0 4px rgba(2,132,199,0.15)}
+.unit-badge {font-size:12px;color:#64748b;margin-top:4px;display:block;font-weight:600;text-transform:uppercase}
+.btn-calc {background:linear-gradient(135deg, #1e40af, #0284c7);color:white;padding:16px;width:100%;border:none;border-radius:8px;font-size:16px;font-weight:800;cursor:pointer;margin-top:20px;box-shadow:0 4px 12px rgba(30,64,175,0.25);transition:all 0.2s}
+.btn-calc:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(30,64,175,0.35)}
+.btn-pdf {background:var(--success);color:white;padding:12px 20px;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;margin-top:15px;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s}
+.btn-pdf:hover {background:#047857}
+.result{background:#f8fafc;padding:25px;border-radius:12px;margin-top:35px;border:1px solid #e2e8f0;border-left:8px solid var(--primary);display:none}
+.result h3 {margin-top:0;color:var(--primary);border-bottom:2px solid #e2e8f0;padding-bottom:10px;font-size:20px;font-weight:800}
+.cost-breakdown {margin-top:18px;padding-top:18px;border-top:2px dashed #cbd5e1;font-weight:800;font-size:18px;color:#1e293b}
+.is-code {font-size:11px;color:#047857;background:#d1fae5;padding:6px 12px;border-radius:20px;display:inline-block;margin-bottom:15px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;border:1px solid #a7f3d0}
+.formula-block {font-family:monospace;background:#e2e8f0;padding:10px 14px;border-radius:8px;margin:12px 0;font-size:13px;color:#334155;border-left:3px solid #94a3b8;font-weight:600}
+footer{text-align:center;padding:40px 15px;color:#64748b;font-size:13px;line-height:1.6;border-top:1px solid #e2e8f0;margin-top:50px;background:#f8fafc}
 @media(max-width:600px){.grid-2, .grid-3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <header>
-<h1>🏗️ SiteEye AI Civil Ultimate</h1>
-<p>Precision Engineering Calculator • Zero-Error Indian Standard Specifications</p>
+<h1>🏗️ SiteEye AI Civil Ultimate Pro</h1>
+<p>Precision Engineering Suite • Zero-Error Material & Labor Budgeting Engine</p>
 </header>
 
 <div class="container">
-<!-- Navigation Tabs for All Modules -->
+<!-- Tabs Navigation -->
 <div class="tab-container">
-<div class="tab active" onclick="switchTab('masonry')">Plaster & Brickwork</div>
-<div class="tab" onclick="switchTab('concrete')">RCC & Concrete (IS 456)</div>
-<div class="tab" onclick="switchTab('steel')">Bar Bending Schedule (BBS)</div>
-<div class="tab" onclick="switchTab('excavation')">Excavation & Flooring</div>
+<div class="tab active" onclick="switchTab(event, 'masonry')">Plaster & Brickwork</div>
+<div class="tab" onclick="switchTab(event, 'concrete')">RCC Slab & Concrete</div>
+<div class="tab" onclick="switchTab(event, 'steel')">Bar Bending Schedule (BBS)</div>
+<div class="tab" onclick="switchTab(event, 'excavation')">Excavation & Flooring</div>
 </div>
 
-<!-- Global System Configurations -->
-<div class="grid-3" style="background:#f8fafc; padding:15px; border-radius:10px; border:1px dashed var(--border); margin-bottom:20px;">
+<!-- Config Matrix System -->
+<div class="grid-3" style="background:#f8fafc; padding:20px; border-radius:12px; border:1px solid var(--border); margin-bottom:25px;">
 <div>
 <label style="margin-top:0;">Input Unit System</label>
 <select id="global-unit" onchange="syncUnitLabels()">
@@ -59,18 +64,18 @@ footer{text-align:center;padding:35px 15px;color:#64748b;font-size:13px;line-hei
 </select>
 </div>
 <div>
-<label style="margin-top:0;">Cement Bag Price (₹)</label>
-<input type="number" id="rate-cement" value="430">
+<label style="margin-top:0;">Cement Bag Rate (₹)</label>
+<input type="number" id="rate-cement" value="440">
 </div>
 <div>
-<label style="margin-top:0;">Sand Price (₹/Brass)</label>
+<label style="margin-top:0;">Sand Rate (₹/Brass)</label>
 <input type="number" id="rate-sand" value="6500">
 </div>
 </div>
 
 <!-- MODULE 1: PLASTER & BRICKWORK -->
 <div id="sec-masonry" class="section active">
-<span class="is-code">IS 1200 Part 3 & 12 • IS 1661</span>
+<span class="is-code">IS 1200 Part 3 & 12 • IS 1661 Compliance</span>
 <div class="grid-2">
 <div>
 <label>Select Work Subtype</label>
@@ -109,9 +114,9 @@ footer{text-align:center;padding:35px 15px;color:#64748b;font-size:13px;line-hei
 </div>
 </div>
 
-<div class="grid-2">
+<div class="grid-3">
 <div>
-<label>Mix Ratio (Cement : Sand)</label>
+<label>Mix Ratio (Cement:Sand)</label>
 <select id="mas-ratio">
 <option value="3">1:3 (Rich Mortar)</option>
 <option value="4">1:4 (Standard External)</option>
@@ -119,145 +124,121 @@ footer{text-align:center;padding:35px 15px;color:#64748b;font-size:13px;line-hei
 <option value="6" selected>1:6 (General Brickwork)</option>
 </select>
 </div>
+<div>
+<label>Labor Rate (₹/Sq.Ft)</label>
+<input type="number" id="rate-lab-masonry" value="18">
+</div>
 <div id="box-brick-cost" style="display:none">
-<label>Brick Unit Rate (₹/Piece)</label>
-<input type="number" id="rate-brick" value="8">
+<label>Brick Rate (₹/Piece)</label>
+<input type="number" id="rate-brick" value="9">
 </div>
 </div>
-<button onclick="calcMasonry()">Calculate Masonry Absolute Value</button>
+<button class="btn-calc" onclick="calcMasonry()">Calculate Masonry Absolute Value</button>
 <div id="out-masonry" class="result"></div>
 </div>
 
 <!-- MODULE 2: RCC & CONCRETE -->
 <div id="sec-concrete" class="section">
-<span class="is-code">IS 456:2000 Structural Code</span>
+<span class="is-code">IS 456:2000 Structural Code Compliance</span>
 <div class="grid-3">
 <div>
 <label id="lbl-con-l">Length</label>
-<input type="number" id="con-l" placeholder="e.g. 20">
+<input type="number" id="con-l" value="20">
 <span class="unit-badge" id="b-con-l">Feet</span>
 </div>
 <div>
 <label id="lbl-con-w">Width / Breadth</label>
-<input type="number" id="con-w" placeholder="e.g. 15">
+<input type="number" id="con-w" value="15">
 <span class="unit-badge" id="b-con-w">Feet</span>
 </div>
 <div>
 <label id="lbl-con-t">Thickness / Depth</label>
-<input type="number" id="con-t" placeholder="e.g. 5">
+<input type="number" id="con-t" value="5">
 <span class="unit-badge" id="b-con-t">Inches</span>
 </div>
 </div>
 
-<div class="grid-2">
+<div class="grid-3">
 <div>
-<label>Concrete Design Grade Mix</label>
+<label>Concrete Grade Mix</label>
 <select id="con-grade">
-<option value="M10">M10 (1:3:6) - PCC Lean Concrete</option>
-<option value="M15">M15 (1:2:4) - General Footings</option>
-<option value="M20" selected>M20 (1:1.5:3) - Standard Slab/Beams</option>
-<option value="M25">M25 (1:1:2) - Heavy Foundations/Columns</option>
+<option value="M10">M10 (1:3:6) - PCC Lean</option>
+<option value="M15">M15 (1:2:4) - Footings</option>
+<option value="M20" selected>M20 (1:1.5:3) - Standard Slab</option>
+<option value="M25">M25 (1:1:2) - Heavy Columns</option>
 </select>
 </div>
 <div>
-<label>Coarse Aggregate Price (₹/Brass)</label>
-<input type="number" id="rate-agg" value="7000">
+<label>Aggregate Price (₹/Brass)</label>
+<input type="number" id="rate-agg" value="7200">
+</div>
+<div>
+<label>Concrete Labor (₹/Cft)</label>
+<input type="number" id="rate-lab-concrete" value="45">
 </div>
 </div>
-<button onclick="calcConcrete()">Compute Concrete Matrix Elements</button>
+<button class="btn-calc" onclick="calcConcrete()">Compute Concrete Matrix Elements</button>
 <div id="out-concrete" class="result"></div>
 </div>
 
-<!-- MODULE 3: BAR BENDING SCHEDULE (BBS) -->
+<!-- MODULE 3: BAR BENDING SCHEDULE -->
 <div id="sec-steel" class="section">
-<span class="is-code">IS 2502 • Reinforcement Calculation</span>
+<span class="is-code">IS 2502 Reinforcement Schedule Standard</span>
 <div class="grid-2">
 <div>
-<label>Structural Element Profile</label>
+<label>Structural Profile</label>
 <select id="steel-profile">
-<option value="column">Main Column Longitudinal Steel</option>
-<option value="beam">Beam Main Reinforcement</option>
+<option value="column">Main Column Steel</option>
+<option value="beam">Beam Main Steel</option>
 <option value="slab">Slab Distribution Grid</option>
 </select>
 </div>
 <div>
-<label>Diameter of Steel Bar (mm)</label>
+<label>Bar Diameter (mm)</label>
 <select id="st-dia">
 <option value="8">8 mm</option>
 <option value="10">10 mm</option>
 <option value="12" selected>12 mm</option>
 <option value="16">16 mm</option>
 <option value="20">20 mm</option>
-<option value="25">25 mm</option>
 </select>
 </div>
 </div>
 
-<div class="grid-3">
+<div class="grid-2">
+<div class="grid-2">
 <div>
-<label>Single Cutting Length (mtr)</label>
-<input type="number" id="st-len" value="4.2">
-<span class="unit-badge">Must be in meters</span>
+<label>Cutting Length (mtr)</label>
+<input type="number" id="st-len" value="4.5">
 </div>
 <div>
-<label>Total Number of Bars</label>
-<input type="number" id="st-nos" value="8">
+<label>Total Bars (Nos)</label>
+<input type="number" id="st-nos" value="12">
 </div>
+</div>
+<div class="grid-2">
 <div>
 <label>Steel Price (₹/Kg)</label>
-<input type="number" id="rate-steel" value="65">
+<input type="number" id="rate-steel" value="68">
+</div>
+<div>
+<label>Tying Labor (₹/Kg)</label>
+<input type="number" id="rate-lab-steel" value="8">
 </div>
 </div>
-<button onclick="calcSteel()">Evaluate TMT Steel Weightment & BOQ</button>
+</div>
+<button class="btn-calc" onclick="calcSteel()">Evaluate TMT Steel Weightment & BOQ</button>
 <div id="out-steel" class="result"></div>
 </div>
 
 <!-- MODULE 4: EXCAVATION & FLOORING -->
 <div id="sec-excavation" class="section">
-<span class="is-code">IS 1200 Part 1 & Part 11</span>
+<span class="is-code">IS 1200 Part 1 & Part 11 Standard</span>
 <div class="grid-3">
 <div>
 <label id="lbl-ex-l">Area Length</label>
-<input type="number" id="ex-l" value="10">
+<input type="number" id="ex-l" value="12">
 <span class="unit-badge" id="b-ex-l">Feet</span>
 </div>
 <div>
 <label id="lbl-ex-w">Area Width</label>
-<input type="number" id="ex-w" value="10">
-<span class="unit-badge" id="b-ex-w">Feet</span>
-</div>
-<div>
-<label id="lbl-ex-d">Excavation Depth</label>
-<input type="number" id="ex-d" value="4">
-<span class="unit-badge" id="b-ex-d">Feet</span>
-</div>
-</div>
-<div class="grid-2">
-<div>
-<label>Flooring Material Type</label>
-<select id="floor-tile-size">
-<option value="600">Vitrified Tiles (600mm x 600mm)</option>
-<option value="800">Premium Tiles (800mm x 800mm)</option>
-<option value="marble">Marble / Granite Slab Grid</option>
-</select>
-</div>
-<div>
-<label>Tile/Marble Base Unit Price (₹/Sq.Ft)</label>
-<input type="number" id="rate-tile" value="55">
-</div>
-</div>
-<button onclick="calcExcavationFlooring()">Run Excavation & Floor Matrix Plan</button>
-<div id="out-excavation" class="result"></div>
-</div>
-
-</div>
-
-<footer>
-© 2026 Vikas Dipak Patil • Engineered for absolute Civil Precision<br>
-Zero Logic Variance Engine Compliant with National Building Code (NBC) India<br>
-📧 vikaspatil2740@gmail.com | 📱 +91-8767610275
-</footer>
-
-<script>
-function switchTab(tabId) {
-  
