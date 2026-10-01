@@ -1,9 +1,10 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>SiteEye AI - Vikas Patil</title>
-<style>*{box-sizing:border-box}body{font-family:sans-serif;background:#f1f5f9;margin:0}header{background:#0f172a;color:#fff;padding:20px;text-align:center}.container{max-width:950px;margin:15px auto;background:#fff;padding:18px;border-radius:12px}.tabs{display:flex;overflow-x:auto;gap:5px;border-bottom:2px solid #ddd}.tab{padding:10px;font-weight:700;color:#64748b;cursor:pointer;white-space:nowrap}.tab.active{color:#1e40af;border-bottom:3px solid #1e40af;background:#eff6ff}.sec{display:none}.sec.active{display:block}input,select{width:100%;padding:10px;margin:5px 0;border:2px solid #cbd5e1;border-radius:8px}button{background:#1e40af;color:#fff;padding:13px;width:100%;border:none;border-radius:8px;font-weight:800;margin-top:8px}button.green{background:#059669}.result{background:#f0fdf4;padding:14px;border-radius:8px;margin-top:10px;border-left:5px solid #059669;display:none}.card{background:#fffbeb;border:1px solid #f59e0b;padding:12px;border-radius:8px;margin:8px 0}.founder{text-align:center;margin-top:15px;background:#eff6ff;padding:12px;border-radius:10px}.founder a{display:inline-block;margin:4px;padding:8px 12px;color:#fff;text-decoration:none;border-radius:8px}</style></head><body>
+<style>*{box-sizing:border-box}body{font-family:sans-serif;background:#f1f5f9;margin:0}header{background:#0f172a;color:#fff;padding:20px;text-align:center}.container{max-width:950px;margin:15px auto;background:#fff;padding:18px;border-radius:12px}.tabs{display:flex;overflow-x:auto;gap:5px;border-bottom:2px solid #ddd}.tab{padding:10px;font-weight:700;color:#64748b;cursor:pointer;white-space:nowrap}.tab.active{color:#1e40af;border-bottom:3px solid #1e40af;background:#eff6ff}.sec{display:none}.sec.active{display:block}input,select{width:100%;padding:10px;margin:5px 0;border:2px solid #cbd5e1;border-radius:8px}button{background:#1e40af;color:#fff;padding:13px;width:100%;border:none;border-radius:8px;font-weight:800;margin-top:8px}button.green{background:#059669}.result{background:#f0fdf4;padding:14px;border-radius:8px;margin-top:10px;border-left:5px solid #059669;display:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.founder{text-align:center;margin-top:15px;background:#eff6ff;padding:12px;border-radius:10px}.founder a{display:inline-block;margin:4px;padding:8px 12px;color:#fff;text-decoration:none;border-radius:8px}</style></head><body>
 <header><h1>SiteEye AI Civil Pro</h1><p>Vikas Dipak Patil | Nagpur</p></header>
 <div class="container">
 <div class="tabs">
-<div class="tab active" onclick="show('house',this)">🏠 House Cost</div>
+<div class="tab active" onclick="show('house',this)">🏠 House</div>
+<div class="tab" onclick="show('conv',this)">📏 mm-cm-ft</div>
 <div class="tab" onclick="show('tank',this)">💧 Tank</div>
 <div class="tab" onclick="show('diary',this)">📝 Diary</div>
 <div class="tab" onclick="show('concrete',this)">Concrete</div>
@@ -11,44 +12,39 @@
 </div>
 
 <div id="house" class="sec active">
-<h3>Full House Estimator (Nagpur Rate)</h3>
-<label>Built-up Area (sqft)</label><input id="hSqft" type="number" value="1000">
-<label>Quality</label><select id="hQ"><option value="1400">Normal - ₹1400/sqft</option><option value="1800" selected>Medium - ₹1800/sqft</option><option value="2300">Premium - ₹2300/sqft</option></select>
-<button onclick="calcHouse()">Pura Kharcha Nikalo</button>
-<div id="rHouse" class="result"></div>
+<h3>House Cost Estimator</h3><label>Area (sqft)</label><input id="hSqft" type="number" value="1000"><label>Quality</label><select id="hQ"><option value="1400">Normal ₹1400</option><option value="1800" selected>Medium ₹1800</option><option value="2300">Premium ₹2300</option></select><button onclick="calcHouse()">Calculate</button><div id="rHouse" class="result"></div>
 </div>
 
-<div id="tank" class="sec">
-<h3>Water Tank Size</h3>
-<label>Family Members</label><input id="tMem" type="number" value="5">
-<label>Days Storage</label><input id="tDay" type="number" value="2">
-<button onclick="calcTank()">Tank Calculate</button>
-<div id="rTank" class="result"></div>
+<div id="conv" class="sec">
+<h3>📏 Length Converter - mm / cm / ft / inch / m</h3>
+<label>Value</label><input id="uV" type="number" value="10" oninput="calcU()">
+<div class="row"><div><label>From</label><select id="uF" onchange="calcU()"><option value="m" selected>Meter (m)</option><option value="ft">Feet (ft)</option><option value="inch">Inch (in)</option><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option></select></div>
+<div><label>To</label><select id="uT" onchange="calcU()"><option value="m">Meter (m)</option><option value="ft" selected>Feet (ft)</option><option value="inch">Inch (in)</option><option value="mm">Millimeter (mm)</option><option value="cm">Centimeter (cm)</option></select></div></div>
+<button onclick="calcU()">Convert Karo</button>
+<div id="rU" class="result" style="font-size:18px"></div>
+<hr>
+<h4>Quick Table (1 m = )</h4>
+<div class="result" style="display:block;background:#eff6ff;border-left-color:#1e40af">
+1 m = 3.2808 ft<br>1 m = 39.3701 inch<br>1 m = 1000 mm<br>1 m = 100 cm<br>1 ft = 304.8 mm
+</div>
 </div>
 
-<div id="diary" class="sec">
-<h3>Site Diary - Roz ka Hisab</h3>
-<label>Date</label><input id="dDate" type="date">
-<label>Kaam Details</label><input id="dWork" placeholder="e.g. Slab casting, 10 labour">
-<label>Kharcha ₹</label><input id="dCost" type="number" placeholder="5000">
-<button class="green" onclick="saveDiary()">Save in Phone</button>
-<button onclick="loadDiary()">Show Diary</button>
-<div id="rDiary" class="result"></div>
-</div>
-
-<div id="concrete" class="sec"><label>L(m)</label><input id="cL" type="number" value="10"><label>W(m)</label><input id="cW" type="number" value="5"><label>Thick(m)</label><input id="cD" type="number" value="0.15"><button onclick="calcC()">Calculate</button><div id="rC" class="result"></div></div>
-<div id="bbs" class="sec"><label>Length(m)</label><input id="bL" type="number" value="5"><label>Dia</label><select id="bD"><option>8</option><option selected>12</option><option>16</option></select><label>Bars</label><input id="bN" type="number" value="4"><button onclick="calcB()">BBS</button><div id="rB" class="result"></div></div>
+<div id="tank" class="sec"><h3>Water Tank</h3><label>Members</label><input id="tMem" type="number" value="5"><button onclick="calcTank()">Calculate</button><div id="rTank" class="result"></div></div>
+<div id="diary" class="sec"><h3>Site Diary</h3><label>Date</label><input id="dDate" type="date"><label>Work</label><input id="dWork"><label>Cost</label><input id="dCost" type="number"><button class="green" onclick="saveD()">Save</button><button onclick="loadD()">Show</button><div id="rD" class="result"></div></div>
+<div id="concrete" class="sec"><label>L</label><input id="cL" type="number" value="10"><label>W</label><input id="cW" type="number" value="5"><label>T</label><input id="cD" type="number" value="0.15"><button onclick="calcC()">Calculate</button><div id="rC" class="result"></div></div>
+<div id="bbs" class="sec"><label>Length</label><input id="bL" type="number" value="5"><button onclick="calcB()">BBS</button><div id="rB" class="result"></div></div>
 
 <div class="founder"><b>Vikas Dipak Patil</b><br><a style="background:#1e40af" href="mailto:vikaspatil2740@gmail.com">Email</a><a style="background:#059669" href="tel:8767610275">Call</a><a style="background:#25D366" href="https://wa.me/918767610275">WhatsApp</a></div>
 </div>
 <script>
 function show(id,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));el.classList.add('active');document.getElementById(id).classList.add('active');}
 function out(id,h){var e=document.getElementById(id);e.innerHTML=h;e.style.display='block';}
-function calcHouse(){var s=parseFloat(document.getElementById('hSqft').value)||0,q=parseFloat(document.getElementById('hQ').value);var total=s*q;out('rHouse',"<div class='card'><b>Total Cost: ₹"+total.toLocaleString('en-IN')+"</b><br>Cement: "+Math.ceil(s*0.4)+" bags<br>Steel: "+(s*4).toFixed(0)+" kg<br>Sand: "+(s*0.8).toFixed(1)+" brass<br>Labour ~30%: ₹"+(total*0.3).toLocaleString('en-IN')+"</div><button class='green' onclick='window.print()'>📄 PDF Download</button>");}
-function calcTank(){var m=parseFloat(document.getElementById('tMem').value)||0,d=parseFloat(document.getElementById('tDay').value)||0;var litres=m*135*d;out('rTank',"Need: <b>"+litres+" Litres</b><br>Suggested: "+Math.ceil(litres/1000)+" x 1000L tank<br>Size: "+(litres/1000).toFixed(2)+" m3");}
-function calcC(){var v=(parseFloat(document.getElementById('cL').value)||0)*(parseFloat(document.getElementById('cW').value)||0)*(parseFloat(document.getElementById('cD').value)||0);out('rC',"Concrete: "+v.toFixed(2)+" m3<br>Cement: "+((v*1.54/5.5)/0.0347).toFixed(1)+" bags");}
-function calcB(){var L=parseFloat(document.getElementById('bL').value)||0,D=parseFloat(document.getElementById('bD').value),N=parseFloat(document.getElementById('bN').value)||0;var wt=(D*D/162)*(L+0.3)*N;out('rB',"Steel: "+wt.toFixed(2)+" kg");}
-function saveDiary(){var d=document.getElementById('dDate').value,w=document.getElementById('dWork').value,c=document.getElementById('dCost').value;var all=JSON.parse(localStorage.getItem('diary')||'[]');all.push({d:d,w:w,c:c});localStorage.setItem('diary',JSON.stringify(all));alert('Saved!');}
-function loadDiary(){var all=JSON.parse(localStorage.getItem('diary')||'[]');var h=all.map(x=>x.d+": "+x.w+" - ₹"+x.c).join('<br>')||'Empty';out('rDiary',h);}
-document.getElementById('dDate').valueAsDate=new Date();
+function calcU(){var v=parseFloat(document.getElementById('uV').value)||0;var f=document.getElementById('uF').value;var t=document.getElementById('uT').value;var m={m:1,ft:0.3048,inch:0.0254,mm:0.001,cm:0.01};var r=v*m[f]/m[t];var all="";var vm=v*m[f];all="<b>"+v+" "+f+" = "+r.toFixed(4)+" "+t+"</b><br><br>--- Sab me ---<br>Meter: "+vm.toFixed(4)+" m<br>Feet: "+(vm/0.3048).toFixed(4)+" ft<br>Inch: "+(vm/0.0254).toFixed(2)+" in<br>mm: "+(vm*1000).toFixed(1)+" mm<br>cm: "+(vm*100).toFixed(2)+" cm";out('rU',all);}
+function calcHouse(){var s=parseFloat(document.getElementById('hSqft').value)||0,q=parseFloat(document.getElementById('hQ').value);out('rHouse',"<b>Total: ₹"+(s*q).toLocaleString('en-IN')+"</b>");}
+function calcTank(){var m=parseFloat(document.getElementById('tMem').value)||0;out('rTank',"Need: <b>"+(m*135*2)+" Litres</b>");}
+function calcC(){var v=(parseFloat(document.getElementById('cL').value)||0)*(parseFloat(document.getElementById('cW').value)||0)*(parseFloat(document.getElementById('cD').value)||0);out('rC',"Vol: "+v.toFixed(2)+" m3");}
+function calcB(){var L=parseFloat(document.getElementById('bL').value)||0;out('rB',"Steel: "+((12*12/162)*(L+0.3)*4).toFixed(2)+" kg");}
+function saveD(){var all=JSON.parse(localStorage.getItem('diary')||'[]');all.push({d:document.getElementById('dDate').value,w:document.getElementById('dWork').value,c:document.getElementById('dCost').value});localStorage.setItem('diary',JSON.stringify(all));alert('Saved');}
+function loadD(){var all=JSON.parse(localStorage.getItem('diary')||'[]');out('rD',all.map(x=>x.d+": "+x.w+" - ₹"+x.c).join('<br>')||'Empty');}
+document.getElementById('dDate').valueAsDate=new Date();calcU();
 </script></body></html>
