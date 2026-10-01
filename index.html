@@ -3,264 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SiteEye AI Civil Pro - Free Concrete, Brick, Steel Calculator by Vikas Dipak Patil">
 <title>SiteEye AI Civil Pro - by Vikas Dipak Patil</title>
 <style>
 :root { --primary: #1e40af; --accent: #0284c7; --success: #059669; --bg: #f1f5f9; --dark: #0f172a; --border: #cbd5e1; }
 body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);margin:0;padding:0;color:var(--dark);line-height:1.5}
-header{background:linear-gradient(135deg, #0f172a, #1e40af);color:white;padding:35px 15px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.15)}
-header h1 {margin:0;font-size:26px;letter-spacing:0.5px;font-weight:800}
-header p {margin:8px 0 0;opacity:0.9;font-size:14px}
-.container{max-width:900px;margin:30px auto;background:white;padding:35px;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,0.05);box-sizing:border-box;border:1px solid #e2e8f0}
-.tab-container {display:flex;margin-bottom:25px;border-bottom:2px solid #e2e8f0;gap:5px;overflow-x:auto;padding-bottom:5px}
-.tab {padding:12px 24px;cursor:pointer;font-weight:700;color:#64748b;border-radius:8px 8px 0 0;border-bottom:3px solid transparent;transition:0.2s;white-space:nowrap;font-size:15px}
-.tab:hover {background:#f8fafc;color:var(--primary)}
+header{background:linear-gradient(135deg, #0f172a, #1e40af);color:white;padding:35px 15px;text-align:center;}
+header h1 {margin:0;font-size:26px;font-weight:800}
+.container{max-width:950px;margin:30px auto;background:white;padding:35px;border-radius:16px;box-shadow:0 20px 40px rgba(0,0,0,0.05);border:1px solid #e2e8f0}
+.tab-container {display:flex;margin-bottom:25px;border-bottom:2px solid #e2e8f0;gap:5px;overflow-x:auto}
+.tab {padding:12px 20px;cursor:pointer;font-weight:700;color:#64748b;border-bottom:3px solid transparent;white-space:nowrap}
 .tab.active {color:var(--primary);border-bottom-color:var(--primary);background:#eff6ff}
-.section {display:none}
-.section.active {display:block}
+.section {display:none} .section.active {display:block}
 .grid-2 {display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .grid-3 {display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px}
-label{display:block;margin:14px 0 6px;font-weight:700;font-size:14px;color:#334155}
-input,select{width:100%;padding:12px 16px;margin-bottom:5px;border:2px solid var(--border);border-radius:8px;box-sizing:border-box;font-size:15px;font-weight:500}
-input:focus,select:focus{border-color:var(--accent);outline:none;background:#fff}
-.unit-badge {font-size:12px;color:#64748b;margin-top:4px;display:block;font-weight:600;text-transform:uppercase}
-.btn-calc {background:linear-gradient(135deg, #1e40af, #0284c7);color:white;padding:16px;width:100%;border:none;border-radius:8px;font-size:16px;font-weight:800;cursor:pointer;margin-top:20px;box-shadow:0 4px 12px rgba(30,64,175,0.25)}
-.btn-pdf {background:var(--success);color:white;padding:12px 20px;border:none;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;margin-top:15px;display:inline-flex;align-items:center;gap:8px}
-.result{background:#f8fafc;padding:25px;border-radius:12px;margin-top:35px;border:1px solid #e2e8f0;border-left:8px solid var(--primary);display:none;color:var(--dark)}
-.result h3 {margin-top:0;color:var(--primary);border-bottom:2px solid #e2e8f0;padding-bottom:10px;font-size:20px;font-weight:800}
-.cost-breakdown {margin-top:18px;padding-top:18px;border-top:2px dashed #cbd5e1;font-weight:800;font-size:18px;color:#1e293b}
-.is-code {font-size:11px;color:#047857;background:#d1fae5;padding:6px 12px;border-radius:20px;display:inline-block;margin-bottom:15px;font-weight:800}
-footer{text-align:center;padding:40px 15px;color:#475569;font-size:14px;line-height:1.6;border-top:1px solid #e2e8f0;margin-top:50px;background:#f8fafc;border-radius:0 0 16px 16px}
-@media(max-width:600px){.grid-2, .grid-3{grid-template-columns:1fr}}
+label{display:block;margin:14px 0 6px;font-weight:700;font-size:14px}
+input,select{width:100%;padding:12px;margin-bottom:5px;border:2px solid var(--border);border-radius:8px;box-sizing:border-box}
+.btn-calc {background:linear-gradient(135deg, #1e40af, #0284c7);color:white;padding:16px;width:100%;border:none;border-radius:8px;font-size:16px;font-weight:800;cursor:pointer;margin-top:20px}
+.btn-print {background:var(--success);color:white;padding:10px 18px;border:none;border-radius:6px;font-weight:700;cursor:pointer;margin-top:15px}
+.result{background:#f8fafc;padding:25px;border-radius:12px;margin-top:25px;border-left:8px solid var(--primary);display:none}
+.founder-box{background:#eff6ff;border:2px dashed var(--primary);padding:20px;border-radius:12px;margin-top:40px;text-align:center}
+.founder-box h3{margin:0 0 10px;color:var(--primary)}
+.support-btn{display:inline-block;margin:8px;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:700;color:white}
+@media(max-width:768px){.grid-2,.grid-3{grid-template-columns:1fr}}
+@media print {.tab-container,.btn-calc,.btn-print,header,.founder-box{display:none !important} body{background:white} .container{box-shadow:none;border:none}}
 </style>
 </head>
 <body>
-
-<header>
-<h1>🏗️ SiteEye AI Civil Pro</h1>
-<p>Precision Engineering Suite • Material & Labor Calculator</p>
-</header>
-
+<header><h1>SiteEye AI Civil Pro</h1><p>Advanced Calculator by Vikas Dipak Patil</p></header>
 <div class="container">
-<!-- Tabs Navigation -->
 <div class="tab-container">
-<div class="tab active" onclick="switchTab(this, 'masonry')">Plaster & Brickwork</div>
-<div class="tab" onclick="switchTab(this, 'concrete')">RCC Slab & Concrete</div>
-<div class="tab" onclick="switchTab(this, 'steel')">Bar Bending Schedule (BBS)</div>
-<div class="tab" onclick="switchTab(this, 'excavation')">Excavation & Flooring</div>
+<div class="tab active" onclick="switchTab('concrete')">Concrete</div>
+<div class="tab" onclick="switchTab('brickwork')">Brickwork</div>
+<div class="tab" onclick="switchTab('steel')">Steel</div>
+<div class="tab" onclick="switchTab('plaster')">Plaster</div>
+<div class="tab" onclick="switchTab('tiles')">Tiles</div>
+<div class="tab" onclick="switchTab('excavation')">Excavation</div>
 </div>
 
-<!-- Config Matrix System -->
-<div class="grid-3" style="background:#f8fafc; padding:20px; border-radius:12px; border:1px solid var(--border); margin-bottom:25px;">
-<div>
-<label style="margin-top:0;">Input Unit System</label>
-<select id="global-unit" onchange="syncUnitLabels()">
-<option value="ft">Imperial (Feet/Inches)</option>
-<option value="mt">Metric (Meters/mm)</option>
-</select>
-</div>
-<div>
-<label style="margin-top:0;">Cement Bag Rate (₹)</label>
-<input type="number" id="rate-cement" value="440">
-</div>
-<div>
-<label style="margin-top:0;">Sand Rate (₹/Brass)</label>
-<input type="number" id="rate-sand" value="6500">
-</div>
+<div id="concrete" class="section active">
+<h3>Concrete Calculator (IS 456:2000)</h3>
+<div class="grid-3"><div><label>Length (m)</label><input type="number" id="c-length" value="10"></div><div><label>Width (m)</label><input type="number" id="c-width" value="5"></div><div><label>Depth (m)</label><input type="number" id="c-depth" value="0.15"></div></div>
+<label>Mix Ratio</label><select id="c-ratio"><option value="M15">M15 (1:2:4)</option><option value="M20" selected>M20 (1:1.5:3)</option><option value="M25">M25 (1:1:2)</option></select>
+<button class="btn-calc" onclick="calculateConcrete()">Calculate</button>
+<div id="concrete-result" class="result"><div id="concrete-output"></div><button class="btn-print" onclick="window.print()">Print</button></div>
 </div>
 
-<!-- MODULE 1: PLASTER & BRICKWORK -->
-<div id="sec-masonry" class="section active">
-<span class="is-code">IS 1200 & IS 1661 Compliance</span>
-<div class="grid-2">
-<div>
-<label>Select Work Subtype</label>
-<select id="mas-type" onchange="toggleMasonryFields()">
-<option value="plaster">Wall Plastering (प्लास्टर कार्य)</option>
-<option value="brick">Brick Masonry Work (ईंट जुड़ाई)</option>
-</select>
-</div>
-<div>
-<label id="lbl-mas-l">Length</label>
-<input type="number" id="mas-l" value="20">
-<span class="unit-badge" id="b-mas-l">Feet</span>
-</div>
+<div id="brickwork" class="section">
+<h3>Brickwork Calculator</h3>
+<div class="grid-2"><div><label>Length (m)</label><input type="number" id="b-length" value="5"></div><div><label>Height (m)</label><input type="number" id="b-height" value="3"></div></div>
+<label>Thickness</label><select id="b-thickness"><option value="0.23" selected>230mm Wall</option><option value="0.115">115mm Wall</option></select>
+<button class="btn-calc" onclick="calculateBrickwork()">Calculate</button>
+<div id="brickwork-result" class="result"><div id="brickwork-output"></div><button class="btn-print" onclick="window.print()">Print</button></div>
 </div>
 
-<div class="grid-2">
-<div>
-<label id="lbl-mas-h">Height</label>
-<input type="number" id="mas-h" value="20">
-<span class="unit-badge" id="b-mas-h">Feet</span>
-</div>
-<div id="box-brick-thick" style="display:none">
-<label>Wall Thickness</label>
-<select id="brick-w-thick">
-<option value="9">9-inch Main Wall (230mm)</option>
-<option value="4.5">4.5-inch Partition (115mm)</option>
-</select>
-</div>
-<div id="box-plast-thick">
-<label>Plaster Thickness</label>
-<select id="plast-thick">
-<option value="12">12 mm (Internal Smooth)</option>
-<option value="15">15 mm (External Rough)</option>
-<option value="20">20 mm (Double Coat Floor/Ceil)</option>
-</select>
-</div>
+<div id="steel" class="section">
+<h3>Steel Weight (D²/162 x L)</h3>
+<div class="grid-2"><div><label>Dia (mm)</label><select id="s-dia"><option>8</option><option>10</option><option selected>12</option><option>16</option><option>20</option></select></div><div><label>Length (m)</label><input type="number" id="s-length" value="12"></div></div>
+<button class="btn-calc" onclick="calculateSteel()">Calculate</button>
+<div id="steel-result" class="result"><div id="steel-output"></div><button class="btn-print" onclick="window.print()">Print</button></div>
 </div>
 
-<div class="grid-3">
-<div>
-<label>Mix Ratio (Cement:Sand)</label>
-<select id="mas-ratio">
-<option value="3">1:3</option>
-<option value="4">1:4</option>
-<option value="5">1:5</option>
-<option value="6" selected>1:6</option>
-</select>
-</div>
-<div>
-<label>Labor Rate (₹/Sq.Ft)</label>
-<input type="number" id="rate-lab-masonry" value="18">
-</div>
-<div id="box-brick-cost" style="display:none">
-<label>Brick Rate (₹/Piece)</label>
-<input type="number" id="rate-brick" value="9">
-</div>
-</div>
-<button class="btn-calc" onclick="calcMasonry()">Calculate Masonry Absolute Value</button>
-<div id="out-masonry" class="result"></div>
+<div id="plaster" class="section">
+<h3>Plaster Calculator</h3>
+<div class="grid-2"><div><label>Length (m)</label><input type="number" id="p-length" value="10"></div><div><label>Height (m)</label><input type="number" id="p-height" value="3"></div></div>
+<button class="btn-calc" onclick="calculatePlaster()">Calculate</button>
+<div id="plaster-result" class="result"><div id="plaster-output"></div><button class="btn-print" onclick="window.print()">Print</button></div>
 </div>
 
-<!-- MODULE 2: RCC & CONCRETE -->
-<div id="sec-concrete" class="section">
-<span class="is-code">IS 456:2000 Structural Code</span>
-<div class="grid-3">
-<div>
-<label id="lbl-con-l">Length</label>
-<input type="number" id="con-l" value="20">
-<span class="unit-badge" id="b-con-l">Feet</span>
-</div>
-<div>
-<label id="lbl-con-w">Width / Breadth</label>
-<input type="number" id="con-w" value="15">
-<span class="unit-badge" id="b-con-w">Feet</span>
-</div>
-<div>
-<label id="lbl-con-t">Thickness / Depth</label>
-<input type="number" id="con-t" value="5">
-<span class="unit-badge" id="b-con-t">Inches</span>
-</div>
+<div id="tiles" class="section">
+<h3>Tiles Calculator</h3>
+<div class="grid-2"><div><label>Area Length (m)</label><input type="number" id="t-length" value="5"></div><div><label>Area Width (m)</label><input type="number" id="t-width" value="4"></div></div>
+<label>Tile Size</label><select id="t-size"><option value="0.09">1x1 ft (0.09 sqm)</option><option value="0.36" selected>2x2 ft (0.36 sqm)</option></select>
+<button class="btn-calc" onclick="calculateTiles()">Calculate</button>
+<div id="tiles-result" class="result"><div id="tiles-output"></div><button class="btn-print" onclick="window.print()">Print</button></div>
 </div>
 
-<div class="grid-3">
-<div>
-<label>Concrete Grade Mix</label>
-<select id="con-grade">
-<option value="M10">M10 (1:3:6)</option>
-<option value="M15">M15 (1:2:4)</option>
-<option value="M20" selected>M20 (1:1.5:3)</option>
-<option value="M25">M25 (1:1:2)</option>
-</select>
-</div>
-<div>
-<label>Aggregate Price (₹/Brass)</label>
-<input type="number" id="rate-agg" value="7200">
-</div>
-<div>
-<label>Concrete Labor (₹/Cft)</label>
-<input type="number" id="rate-lab-concrete" value="45">
-</div>
-</div>
-<button class="btn-calc" onclick="calcConcrete()">Compute Concrete Matrix Elements</button>
-<div id="out-concrete" class="result"></div>
+<div id="excavation" class="section">
+<h3>Excavation Calculator</h3>
+<div class="grid-3"><div><label>Length (m)</label><input type="number" id="e-length" value="10"></div><div><label>Width (m)</label><input type="number" id="e-width" value="2"></div><div><label>Depth (m)</label><input type="number" id="e-depth" value="1.5"></div></div>
+<button class="btn-calc" onclick="calculateExcavation()">Calculate</button>
+<div id="excavation-result" class="result"><div id="excavation-output"></div><button class="btn-print" onclick="window.print()">Print</button></div>
 </div>
 
-<!-- MODULE 3: BAR BENDING SCHEDULE -->
-<div id="sec-steel" class="section">
-<span class="is-code">IS 2502 BBS Standard</span>
-<div class="grid-2">
-<div>
-<label>Structural Profile</label>
-<select id="steel-profile">
-<option value="column">Main Column Steel</option>
-<option value="beam">Beam Main Steel</option>
-<option value="slab">Slab Distribution Grid</option>
-</select>
-</div>
-<div>
-<label>Bar Diameter (mm)</label>
-<select id="st-dia">
-<option value="8">8 mm</option>
-<option value="10">10 mm</option>
-<option value="12" selected>12 mm</option>
-<option value="16">16 mm</option>
-<option value="20">20 mm</option>
-</select>
-</div>
+<div class="founder-box">
+<h3>Founder & Creator</h3>
+<p><b>Vikas Dipak Patil</b><br>Civil Engineer | SiteEye AI Civil Pro</p>
+<a class="support-btn" style="background:#1e40af" href="mailto:vikaspatil2740@gmail.com">📧 Email Support</a>
+<a class="support-btn" style="background:#059669" href="tel:8767610275">📞 Call: 8767610275</a>
+<a class="support-btn" style="background:#25D366" href="https://wa.me/918767610275">💬 WhatsApp Support</a>
 </div>
 
-<div class="grid-2">
-<div class="grid-2">
-<div>
-<label>Cutting Length (mtr)</label>
-<input type="number" id="st-len" value="4.5">
 </div>
-<div>
-<label>Total Bars (Nos)</label>
-<input type="number" id="st-nos" value="12">
-</div>
-</div>
-<div class="grid-2">
-<div>
-<label>Steel Price (₹/Kg)</label>
-<input type="number" id="rate-steel" value="68">
-</div>
-<div>
-<label>Tying Labor (₹/Kg)</label>
-<input type="number" id="rate-lab-steel" value="8">
-</div>
-</div>
-</div>
-<button class="btn-calc" onclick="calcSteel()">Evaluate TMT Steel Weightment & BOQ</button>
-<div id="out-steel" class="result"></div>
-</div>
-
-<!-- MODULE 4: EXCAVATION & FLOORING -->
-<div id="sec-excavation" class="section">
-<span class="is-code">IS 1200 Standard</span>
-<div class="grid-3">
-<div>
-<label id="lbl-ex-l">Area Length</label>
-<input type="number" id="ex-l" value="12">
-<span class="unit-badge" id="b-ex-l">Feet</span>
-</div>
-<div>
-<label id="lbl-ex-w">Area Width</label>
-<input type="number" id="ex-w" value="12">
-<span class="unit-badge" id="b-ex-w">Feet</span>
-</div>
-<div>
-<label id="lbl-ex-d">Excavation Depth</label>
-<input type="number" id="ex-d" value="4">
-<span class="unit-badge" id="b-ex-d">Feet</span>
-</div>
-</div>
-<div class="grid-3">
-<div>
-<label>Flooring Type</label>
-<select id="floor-tile-size">
-<option value="600">Tiles (600mm x 600mm)</option>
-<option value="800">Premium Tiles (800mm x 800mm)</option>
-<option value="marble">Marble / Granite Slab</option>
-</select>
-</div>
-<div>
-<label>Material Price (₹/Sq.Ft)</label>
-<input type="number" id="rate-tile" value="60">
-</div>
-<div>
-<label>Flooring Labor (₹/Sq.Ft)</label>
-<input type="number" id="rate-lab-floor" value="22">
-</div>
-</div>
+<script>
+function switchTab(id){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));event.target.classList.add('active');document.getElementById(id).classList.add('active');}
+function calculateConcrete(){let l=parseFloat(document.getElementById('c-length').value),w=parseFloat(document.getElementById('c-width').value),d=parseFloat(document.getElementById('c-depth').value);let vol=l*w*d;let dry=vol*1.54;let ratio=document.getElementById('c-ratio').value;let parts=ratio=='M15'?7:ratio=='M20'?5.5:4;let cementVol=dry/parts;let bags=cementVol/0.0347;document.getElementById('concrete-output').innerHTML=`Volume: ${vol.toFixed(2)} m3<br>Cement Bags: ${bags.toFixed(1)} bags<br>Sand: ${(cementVol*(parts>5?2:1.5)).toFixed(2)} m3`;document.getElementById('concrete-result').style.display='block';}
+function calculateBrickwork(){let l=parseFloat(document.getElementById('b-length').value),h=parseFloat(document.getElementById('b-height').value),t=parseFloat(document.getElementById('b-thickness').value);let vol=l*h*t;let bricks=t>0.2?vol*500:vol*1000;document.getElementById('brickwork-output').innerHTML=`Wall Volume: ${vol.toFixed(2)} m3<br>Bricks Needed: ${Math.ceil(bricks)} nos`;document.getElementById('brickwork-result').style.display='block';}
+function calculateSteel(){let d=parseFloat(document.getElementById('s-dia').value),l=parseFloat(document.getElementById('s-length').value);let wt=(d*d/162)*l;document.getElementById('steel-output').innerHTML=`Weight: ${wt.toFixed(2)} kg`;document.getElementById('steel-result').style.display='block';}
+function calculatePlaster(){let a=parseFloat(document.getElementById('p-length').value)*parseFloat(document.getElementById('p-height').value);let vol=a*0.012;let cementBags=(vol*1.33/5)/0.0347;document.getElementById('plaster-output').innerHTML=`Area: ${a.toFixed(2)} sqm<br>Cement: ${cementBags.toFixed(1)} bags`;document.getElementById('plaster-result').style.display='block';}
+function calculateTiles(){let area=parseFloat(document.getElementById('t-length').value)*parseFloat(document.getElementById('t-width').value);let tsize=parseFloat(document.getElementById('t-size').value);let nos=area/tsize*1.1;document.getElementById('tiles-output').innerHTML=`Area: ${area.toFixed(2)} sqm<br>Tiles Needed (10% wastage): ${Math.ceil(nos)} nos`;document.getElementById('tiles-result').style.display='block';}
+function calculateExcavation(){let v=parseFloat(document.getElementById('e-length').value)*parseFloat(document.getElementById('e-width').value)*parseFloat(document.getElementById('e-depth').value);document.getElementById('excavation-output').innerHTML=`Excavation Volume: ${v.toFixed(2)} m3<br>= ${(v*35.3147).toFixed(1)} brass`;document.getElementById('excavation-result').style.display='block';}
+</script>
+</body>
+</html>
